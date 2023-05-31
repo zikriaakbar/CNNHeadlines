@@ -1,0 +1,31 @@
+import requests
+from bs4 import BeautifulSoup
+
+# URL of the CNN website
+url = "https://www.cnn.com/"
+
+# Send a GET request to the URL
+response = requests.get(url)
+
+# Create a BeautifulSoup object to parse the HTML content
+soup = BeautifulSoup(response.content, "html.parser")
+
+# Find all the headline elements on the page
+headline_elements = soup.find_all("h3", class_="cd__headline")
+
+# Extract the text from the headline elements
+headlines = [headline.text.strip() for headline in headline_elements]
+
+# Print the headlines
+for headline in headlines:
+    print(headline)
+
+Make sure you have the BeautifulSoup library installed before running this script. You can install it using pip:
+
+pip install beautifulsoup4
+
+This script sends a GET request to the CNN website, parses the HTML content using BeautifulSoup, and then finds all the headline elements on the page. It extracts the text from the headline elements and prints them out.
+
+You can modify the script as per your requirements, such as saving the headlines to a file or performing further processing on the extracted data.
+
+Note that websites may change their structure over time, so this script might need adjustments if CNN modifies their HTML structure for headlines.
